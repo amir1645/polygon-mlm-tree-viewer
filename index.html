@@ -1,114 +1,0 @@
-<!DOCTYPE html>
-<html lang="fa" dir="rtl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ژنولوژی شبکه کاربران - نمایش درختی هرمی</title>
-    <link rel="stylesheet" href="styles.css">
-    <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
-    <script src="https://d3js.org/d3.v7.min.js"></script>
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌳</text></svg>">
-</head>
-<body>
-    <div class="container">
-        <header>
-            <h1>🌳 ژنولوژی شبکه کاربران - ساختار هرمی باینری</h1>
-            <div class="wallet-section">
-                <button id="connectWallet" class="btn-primary">🔗 اتصال کیف پول</button>
-                <span id="walletAddress" class="wallet-address">اتصال برقرار نشده</span>
-            </div>
-        </header>
-
-        <main>
-            <div class="user-info-section">
-                <h2>👤 اطلاعات کاربری</h2>
-                <div id="userInfo" class="user-info">
-                    <p>لطفاً ابتدا کیف پول خود را متصل کنید</p>
-                </div>
-                
-                <div class="network-stats">
-                    <h3>📊 آمار شبکه</h3>
-                    <div id="networkStats" class="stats-grid">
-                        <div class="stat-item">
-                            <span class="stat-label">کل کاربران:</span>
-                            <span id="totalUsers" class="stat-value">-</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-label">کاربران ماینر:</span>
-                            <span id="minerUsers" class="stat-value">-</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-label">تعادل کلی:</span>
-                            <span id="totalBalance" class="stat-value">-</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="tree-section">
-                <div class="tree-header">
-                    <h2>📊 ساختار درختی هرمی</h2>
-                    <div class="tree-controls">
-                        <div class="current-user-info">
-                            <strong>کاربر ریشه:</strong>
-                            <span id="currentUserId">-</span>
-                        </div>
-                        <div class="control-group">
-                            <label for="depthControl">عمق نمایش:</label>
-                            <input type="range" id="depthControl" min="1" max="6" value="4" class="slider">
-                            <span id="depthValue">4</span>
-                        </div>
-                        <div class="tree-buttons">
-                            <button id="expandAll" class="btn-expand">➕ گسترش همه</button>
-                            <button id="collapseAll" class="btn-collapse">➖ جمع کردن همه</button>
-                            <button id="resetView" class="btn-reset">🔄 بازنشانی</button>
-                            <button id="fullscreen" class="btn-fullscreen">📺 تمام صفحه</button>
-                        </div>
-                    </div>
-                </div>
-                
-                <div id="treeContainer" class="tree-container">
-                    <div id="treeVisualization"></div>
-                    <div class="loading-spinner" id="treeLoading" style="display: none;">
-                        <div class="spinner"></div>
-                        <p>در حال بارگذاری ساختار درختی...</p>
-                    </div>
-                    
-                    <div class="tree-legend">
-                        <div class="legend-title">راهنما:</div>
-                        <div class="legend-item">
-                            <div class="legend-color current-user"></div>
-                            <span>کاربر فعلی (شما)</span>
-                        </div>
-                        <div class="legend-item">
-                            <div class="legend-color miner"></div>
-                            <span>کاربر ماینر</span>
-                        </div>
-                        <div class="legend-item">
-                            <div class="legend-color regular"></div>
-                            <span>کاربر عادی</span>
-                        </div>
-                        <div class="legend-item">
-                            <div class="legend-color empty"></div>
-                            <span>موقعیت خالی</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </main>
-
-        <div id="userModal" class="modal">
-            <div class="modal-content">
-                <span class="close">&times;</span>
-                <h3>📋 جزئیات کاربر</h3>
-                <div id="modalUserInfo"></div>
-                <div class="modal-actions">
-                    <button id="closeModal" class="btn-secondary">بستن</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <script src="app.js"></script>
-</body>
-</html>
