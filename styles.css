@@ -1,0 +1,272 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary: #2563eb;
+    --primary-dark: #1d4ed8;
+    --secondary: #7c3aed;
+    --accent: #dc2626;
+    --light: #f8fafc;
+    --dark: #1e293b;
+    --gray: #64748b;
+    --gray-light: #e2e8f0;
+    --border-radius: 8px;
+}
+
+body {
+    font-family: system-ui, -apple-system, sans-serif;
+    line-height: 1.5;
+    color: var(--dark);
+    background: #f1f5f9;
+    min-height: 100vh;
+    direction: rtl;
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 15px;
+}
+
+/* Header Styles */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background: white;
+    border-radius: var(--border-radius);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+h1 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary);
+}
+
+.wallet-section {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.wallet-address {
+    background-color: var(--gray-light);
+    padding: 8px 12px;
+    border-radius: 20px;
+    font-family: monospace;
+    font-size: 0.8rem;
+}
+
+/* Button Styles */
+.btn-primary {
+    background: var(--primary);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: background 0.2s;
+}
+
+.btn-primary:hover {
+    background: var(--primary-dark);
+}
+
+.btn-primary:disabled {
+    background: var(--gray);
+    cursor: not-allowed;
+}
+
+/* Main Content Styles */
+main {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 20px;
+}
+
+.user-info-section, .tree-section {
+    background: white;
+    border-radius: var(--border-radius);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+h2 {
+    color: var(--primary);
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+    border-bottom: 2px solid var(--gray-light);
+    padding-bottom: 8px;
+}
+
+/* User Info Styles */
+.user-info {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.info-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 6px 0;
+    border-bottom: 1px solid var(--gray-light);
+}
+
+.info-label {
+    font-weight: 600;
+    color: var(--primary);
+}
+
+.info-value {
+    color: var(--dark);
+}
+
+/* Current User Info */
+.current-user-info {
+    background: var(--primary);
+    color: white;
+    padding: 10px 15px;
+    border-radius: var(--border-radius);
+    margin-bottom: 15px;
+    text-align: center;
+    font-weight: 600;
+}
+
+/* Tree Container */
+.tree-container {
+    min-height: 500px;
+    border: 1px solid var(--gray-light);
+    border-radius: var(--border-radius);
+    padding: 15px;
+    background: white;
+    overflow: auto;
+}
+
+/* Genealogy Styles */
+.genealogy {
+    padding: 10px;
+}
+
+.level {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 40px;
+    gap: 20px;
+}
+
+.member-node {
+    background: white;
+    border: 2px solid var(--primary);
+    border-radius: var(--border-radius);
+    padding: 12px 15px;
+    text-align: center;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: all 0.2s;
+    min-width: 100px;
+    position: relative;
+}
+
+.member-node:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    border-color: var(--secondary);
+}
+
+.member-node.current-user {
+    background: var(--primary);
+    color: white;
+    border-color: var(--primary-dark);
+}
+
+.member-node.current-user .member-id {
+    color: white;
+}
+
+.member-node.has-children::after {
+    content: '⬇️';
+    position: absolute;
+    bottom: -20px;
+    right: 50%;
+    transform: translateX(50%);
+    font-size: 1rem;
+}
+
+.member-id {
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--primary);
+    margin-bottom: 4px;
+}
+
+.member-stats {
+    font-size: 0.75rem;
+    color: var(--gray);
+}
+
+/* Children Container */
+.children-container {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-top: 30px;
+}
+
+.child-branch {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.child-label {
+    font-size: 0.8rem;
+    color: var(--gray);
+    font-weight: 600;
+}
+
+/* Loading */
+.loading {
+    text-align: center;
+    color: var(--gray);
+    padding: 20px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    main {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    .container {
+        padding: 10px;
+    }
+    
+    header {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+    
+    .level {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+    }
+    
+    .children-container {
+        flex-direction: column;
+        gap: 20px;
+    }
+}
