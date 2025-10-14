@@ -1,0 +1,291 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary: #4361ee;
+    --primary-dark: #3a56d4;
+    --secondary: #7209b7;
+    --accent: #f72585;
+    --success: #4cc9f0;
+    --warning: #f8961e;
+    --danger: #e63946;
+    --light: #f8f9fa;
+    --dark: #212529;
+    --gray: #6c757d;
+    --gray-light: #e9ecef;
+    --border-radius: 12px;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.7;
+    color: var(--dark);
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    direction: rtl;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background: var(--primary);
+    border-radius: var(--border-radius);
+    margin-bottom: 20px;
+    color: white;
+}
+
+h1 {
+    font-size: 1.8rem;
+}
+
+.wallet-section {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.wallet-address {
+    background-color: rgba(255, 255, 255, 0.2);
+    padding: 8px 12px;
+    border-radius: 20px;
+    font-family: monospace;
+}
+
+.btn-primary {
+    background: var(--accent);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    background: var(--primary-dark);
+}
+
+.btn-primary:disabled {
+    background: var(--gray);
+    cursor: not-allowed;
+}
+
+main {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 20px;
+}
+
+.user-info-section, .tree-section {
+    background-color: white;
+    border-radius: var(--border-radius);
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    color: var(--primary);
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--gray-light);
+}
+
+.user-info {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.info-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--gray-light);
+}
+
+.info-label {
+    font-weight: 600;
+    color: var(--primary);
+}
+
+.info-value {
+    color: var(--dark);
+}
+
+.current-user-info {
+    background: var(--primary);
+    color: white;
+    padding: 10px 15px;
+    border-radius: var(--border-radius);
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.tree-container {
+    min-height: 400px;
+    border: 1px solid var(--gray-light);
+    border-radius: var(--border-radius);
+    padding: 20px;
+    background: var(--light);
+}
+
+.genealogy {
+    position: relative;
+    padding: 20px;
+}
+
+.level {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.member-node {
+    background: white;
+    border: 2px solid var(--primary);
+    border-radius: var(--border-radius);
+    padding: 10px 15px;
+    margin: 0 10px;
+    text-align: center;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    min-width: 120px;
+}
+
+.member-node:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.member-node.current-user {
+    background: var(--primary);
+    color: white;
+    border-color: var(--primary-dark);
+}
+
+.member-node.has-children {
+    cursor: pointer;
+}
+
+.member-node.has-children:hover {
+    background-color: #f8f9fa;
+    border-color: var(--accent);
+}
+
+.member-node.expanded {
+    border-color: var(--success);
+    background-color: #f0f9ff;
+}
+
+.member-id {
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--primary);
+    margin-bottom: 5px;
+}
+
+.member-node.current-user .member-id {
+    color: white;
+}
+
+.member-stats {
+    font-size: 0.8rem;
+    color: var(--gray);
+}
+
+.children-container {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 20px;
+    transition: all 0.3s ease;
+}
+
+.child-branch {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.child-label {
+    font-size: 0.8rem;
+    color: var(--gray);
+    margin-bottom: 5px;
+}
+
+.loading {
+    color: var(--gray);
+    font-size: 0.8rem;
+    margin-top: 5px;
+}
+
+.loading-node {
+    padding: 10px;
+    background: var(--gray-light);
+    border-radius: var(--border-radius);
+    text-align: center;
+    color: var(--gray);
+    font-style: italic;
+    min-width: 120px;
+}
+
+/* سطوح مختلف درخت */
+.level-0 .member-node {
+    border-width: 3px;
+    min-width: 140px;
+}
+
+.level-1 .member-node {
+    border-width: 2px;
+    min-width: 130px;
+    transform: scale(0.9);
+}
+
+.level-2 .member-node {
+    border-width: 1px;
+    min-width: 120px;
+    transform: scale(0.8);
+}
+
+.level-3 .member-node {
+    border-width: 1px;
+    min-width: 110px;
+    transform: scale(0.7);
+}
+
+@media (max-width: 768px) {
+    main {
+        grid-template-columns: 1fr;
+    }
+    
+    header {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .level {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+    }
+    
+    .children-container {
+        flex-direction: column;
+        gap: 15px;
+    }
+}
