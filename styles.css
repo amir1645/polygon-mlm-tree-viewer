@@ -1,0 +1,381 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary: #4361ee;
+    --primary-dark: #3a56d4;
+    --secondary: #7209b7;
+    --accent: #f72585;
+    --success: #4cc9f0;
+    --warning: #f8961e;
+    --danger: #e63946;
+    --light: #f8f9fa;
+    --dark: #212529;
+    --gray: #6c757d;
+    --gray-light: #e9ecef;
+    --border-radius: 12px;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.7;
+    color: var(--dark);
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    direction: rtl;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background: var(--primary);
+    border-radius: var(--border-radius);
+    margin-bottom: 20px;
+    color: white;
+}
+
+h1 {
+    font-size: 1.8rem;
+}
+
+.wallet-section {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.wallet-address {
+    background-color: rgba(255, 255, 255, 0.2);
+    padding: 8px 12px;
+    border-radius: 20px;
+    font-family: monospace;
+}
+
+.btn-primary {
+    background: var(--accent);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    background: var(--primary-dark);
+}
+
+.btn-primary:disabled {
+    background: var(--gray);
+    cursor: not-allowed;
+}
+
+main {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 20px;
+}
+
+.user-info-section, .tree-section {
+    background-color: white;
+    border-radius: var(--border-radius);
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    color: var(--primary);
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--gray-light);
+}
+
+.user-info {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.info-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--gray-light);
+}
+
+.info-label {
+    font-weight: 600;
+    color: var(--primary);
+}
+
+.info-value {
+    color: var(--dark);
+}
+
+.current-user-info {
+    background: var(--primary);
+    color: white;
+    padding: 10px 15px;
+    border-radius: var(--border-radius);
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.tree-container {
+    min-height: 600px;
+    border: 1px solid var(--gray-light);
+    border-radius: var(--border-radius);
+    padding: 20px;
+    background: var(--light);
+    overflow: auto;
+}
+
+/* ساختار هرمی جدید */
+.binary-tree {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+.tree-level {
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+    margin-bottom: 80px;
+    position: relative;
+}
+
+/* خطوط اتصال */
+.connector {
+    position: absolute;
+    background: var(--primary);
+    z-index: 1;
+}
+
+.connector.horizontal {
+    height: 2px;
+}
+
+.connector.vertical {
+    width: 2px;
+}
+
+/* گره‌ها */
+.tree-node {
+    background: white;
+    border: 2px solid var(--primary);
+    border-radius: var(--border-radius);
+    padding: 12px 15px;
+    text-align: center;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+    min-width: 140px;
+    position: relative;
+    z-index: 2;
+}
+
+.tree-node:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    border-color: var(--accent);
+}
+
+.tree-node.current-user {
+    background: var(--primary);
+    color: white;
+    border-color: var(--primary-dark);
+    transform: scale(1.1);
+}
+
+.tree-node.has-children {
+    cursor: pointer;
+}
+
+.tree-node.has-children:hover {
+    background-color: #f8f9fa;
+}
+
+.tree-node.expanded {
+    border-color: var(--success);
+    background-color: #f0f9ff;
+}
+
+.node-id {
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--primary);
+    margin-bottom: 5px;
+}
+
+.tree-node.current-user .node-id {
+    color: white;
+}
+
+.node-stats {
+    font-size: 0.8rem;
+    color: var(--gray);
+    line-height: 1.3;
+}
+
+/* سطح‌های مختلف */
+.level-0 {
+    margin-bottom: 100px;
+}
+
+.level-0 .tree-node {
+    border-width: 3px;
+    min-width: 160px;
+    font-size: 1.1em;
+}
+
+.level-1 {
+    margin-bottom: 80px;
+}
+
+.level-1 .tree-node {
+    border-width: 2px;
+    min-width: 140px;
+}
+
+.level-2 .tree-node {
+    border-width: 2px;
+    min-width: 130px;
+}
+
+.level-3 .tree-node {
+    border-width: 1px;
+    min-width: 120px;
+}
+
+/* برچسب‌های چپ و راست */
+.side-indicator {
+    position: absolute;
+    font-size: 0.7rem;
+    color: var(--gray);
+    background: white;
+    padding: 2px 6px;
+    border-radius: 10px;
+    border: 1px solid var(--gray-light);
+    z-index: 3;
+}
+
+.left-side {
+    left: -35px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.right-side {
+    right: -35px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+/* هایلایت برای چپ و راست */
+.tree-node.left-branch {
+    border-left: 4px solid var(--warning);
+}
+
+.tree-node.right-branch {
+    border-right: 4px solid var(--secondary);
+}
+
+/* نمایش وضعیت expand */
+.tree-node.has-children .node-id::after {
+    content: ' ▶';
+    font-size: 0.8em;
+}
+
+.tree-node.has-children.expanded .node-id::after {
+    content: ' ▼';
+}
+
+.loading {
+    color: var(--gray);
+    font-size: 0.8rem;
+    margin-top: 5px;
+}
+
+.loading-node {
+    padding: 15px;
+    background: var(--gray-light);
+    border-radius: var(--border-radius);
+    text-align: center;
+    color: var(--gray);
+    font-style: italic;
+    min-width: 140px;
+    border: 1px dashed var(--gray);
+}
+
+.empty-node {
+    background: var(--gray-light);
+    border: 2px dashed var(--gray);
+    color: var(--gray);
+}
+
+.empty-node .node-id {
+    color: var(--gray);
+}
+
+/* کانتینر فرزندان */
+.children-level {
+    display: flex;
+    justify-content: center;
+    gap: 100px;
+    margin-top: 20px;
+    position: relative;
+}
+
+@media (max-width: 768px) {
+    main {
+        grid-template-columns: 1fr;
+    }
+    
+    header {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .tree-level {
+        flex-direction: column;
+        align-items: center;
+        gap: 40px;
+        margin-bottom: 60px;
+    }
+    
+    .children-level {
+        flex-direction: column;
+        gap: 40px;
+    }
+    
+    .side-indicator {
+        position: relative;
+        left: auto;
+        right: auto;
+        margin: 5px 0;
+    }
+    
+    .level-0 .tree-node,
+    .level-1 .tree-node,
+    .level-2 .tree-node,
+    .level-3 .tree-node {
+        transform: scale(1);
+        min-width: 140px;
+    }
+}
