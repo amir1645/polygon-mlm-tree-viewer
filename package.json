@@ -1,0 +1,27 @@
+{
+  "name": "polygon-mlm-tree-viewer",
+  "version": "1.0.0",
+  "description": "A DApp for visualizing MLM tree structure on Polygon blockchain",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "ethers": "^6.10.0"
+  },
+  "devDependencies": {
+    "vite": "^5.0.0"
+  },
+  "keywords": [
+    "blockchain",
+    "polygon",
+    "mlm",
+    "dapp",
+    "ethers.js",
+    "d3.js"
+  ],
+  "author": "Your Name",
+  "license": "MIT"
+}
